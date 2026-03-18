@@ -1,16 +1,19 @@
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { LogOut } from "lucide-react";
+import { BASE_URL } from "../config";
 
 const NavBar = () => {
   const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
+
   const handleLogout = async () => {
     try {
-      const response = await axios.post(
-        "http://localhost:3000/logout",
+      await axios.post(
+        `${BASE_URL}/logout`,
         {},
-        { withCredentials: true }
+        { withCredentials: true },
       );
       navigate("/login");
     } catch (err) {
@@ -19,13 +22,19 @@ const NavBar = () => {
   };
 
   return (
-    <div className="navbar bg-base-300 shadow-sm">
-      <div className="flex-1 flex items-center gap-4">
-        <Link to="/" className="btn btn-ghost font-stretch-expanded text-xl">
+    <div className="navbar bg-base-300 shadow-sm px-4">
+      {/* Left section */}
+      <div className="flex-1">
+        <Link
+          to="/"
+          className="text-xl font-bold tracking-wide flex items-center gap-2"
+        >
           KaviosPix 📸
         </Link>
       </div>
-      <label className="swap swap-rotate">
+
+      {/* Theme toggle */}
+      <label className="swap swap-rotate mr-5">
         <input type="checkbox" className="theme-controller" value="light" />
         <svg
           className="swap-off h-5 w-5 fill-current"
@@ -44,35 +53,26 @@ const NavBar = () => {
       </label>
 
       {user && (
-        <div className="flex">
-          <p className="px-5 flex font-stretch-expanded items-center">
-            Welcome, {user.name}
-          </p>
-
+        <div className="flex items-center gap-3">
+          <p className="hidden md:block font-medium">Welcome, {user.name}</p>
           <div className="dropdown dropdown-end">
             <div tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
-                <img alt="user-photo" src={user.photoUrl} />
+                <img
+                  src={user.photoUrl}
+                  alt="user"
+                  referrerPolicy="no-referrer"
+                />
               </div>
             </div>
-
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow"
-            >
-              <li>
-                <Link to="/profile">Profile</Link>
-              </li>
-              <li>
-                <Link to="/connections">Connections</Link>
-              </li>
-              <li>
-                <a onClick={handleLogout}>Logout</a>
-              </li>
-            </ul>
           </div>
         </div>
       )}
+      <ul className="mx-2">
+        <a onClick={handleLogout}>
+          <LogOut />
+        </a>
+      </ul>
     </div>
   );
 };

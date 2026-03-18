@@ -1,9 +1,8 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../config";
 
 const Login = () => {
   const handleLoginWithGoogle = () => {
-    window.location.href = "http://localhost:3000/auth/google";
+    window.location.href = `${BASE_URL}/auth/google`;
   };
   return (
     <>

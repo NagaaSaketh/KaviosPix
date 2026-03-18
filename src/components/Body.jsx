@@ -1,6 +1,6 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
-import Footer from "./Footer";
+// import Footer from "./Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "../utils/userSlice";
 import { useEffect } from "react";
@@ -37,7 +37,7 @@ const Body = () => {
       <main className="flex-1 pb-20">
         <Outlet />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

@@ -1,8 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { BASE_URL } from "../config";
 
 export const fetchUser = createAsyncThunk("user/fetchUser", async () => {
-  const response = await axios.get("http://localhost:3000/profile/view", {
+  const response = await axios.get(`${BASE_URL}/user/profile`, {
     withCredentials: true,
   });
 
