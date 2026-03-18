@@ -21,7 +21,7 @@ const AlbumImages = () => {
   console.log(albumImages);
 
   useEffect(() => {
-    if (!selectedImage) return;
+    if (!selectedImage || !Array.isArray(albumImages)) return;
     if (selectedImage) {
       const updated = albumImages.find(
         (img) => img.imageID === selectedImage.imageID,
@@ -30,7 +30,7 @@ const AlbumImages = () => {
         setSelectedImage(updated);
       }
     }
-  }, [albumImages,selectedImage]);
+  }, [albumImages, selectedImage]);
 
   const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
@@ -49,11 +49,13 @@ const AlbumImages = () => {
   const [comments, setComments] = useState([]);
 
   const showToast = (message) => {
-  setToast(message);
-  setTimeout(() => setToast(""), 3000);
-};
+    setToast(message);
+    setTimeout(() => setToast(""), 3000);
+  };
 
   const filteredImages = useMemo(() => {
+    if (!Array.isArray(albumImages)) return [];
+
     return showFavorites
       ? albumImages.filter((img) => img.isFavorite)
       : albumImages;
@@ -62,7 +64,7 @@ const AlbumImages = () => {
   const [searchParams] = useSearchParams();
   const tagFilter = searchParams.get("tags");
   const currentAlbum = useSelector((state) =>
-    state.album.albums.find((a) => a.albumID === albumId),
+    state.album.albums?.find((a) => a.albumID === albumId),
   );
   console.log(currentAlbum);
   const isOwner = currentAlbum?.ownerID === user?._id;
@@ -484,7 +486,9 @@ const AlbumImages = () => {
 
             <button
               className="btn btn-warning"
-              onClick={() => handleDeleteImage(selectedImage.imageID)}
+              onClick={() =>
+                selectedImage && handleDeleteImage(selectedImage.imageID)
+              }
             >
               Delete
             </button>
@@ -492,7 +496,7 @@ const AlbumImages = () => {
         </div>
       </dialog>
 
-      {albumImages.length === 0 ? (
+      {!albumImages || albumImages.length === 0 ? (
         <div className="flex flex-col items-center justify-center h-[50vh] text-center gap-4 opacity-80">
           <div className="text-6xl">📸</div>
 
