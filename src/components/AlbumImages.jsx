@@ -523,7 +523,7 @@ const AlbumImages = () => {
               className="rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition transform hover:-translate-y-1"
             >
               <img
-                src={`${BASE_URL}/uploads/${img.name}`}
+                src={img.imageUrl}
                 alt={img.name}
                 onClick={() => setSelectedImage(img)}
                 className="w-full h-56 object-cover cursor-pointer hover:scale-105 transition duration-300"
