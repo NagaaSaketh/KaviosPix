@@ -17,6 +17,16 @@ import {
 import { SquarePen, Share2, ImageUp, Trash2, Star } from "lucide-react";
 
 const AlbumImages = () => {
+  const [imageFile, setImageFile] = useState("");
+  const [tags, setTags] = useState("");
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [updatedDesc, setUpdatedDesc] = useState("");
+  const [toast, setToast] = useState("");
+  const [sharedUsers, setSharedUsers] = useState("");
+  const [showFavorites, setShowFavorites] = useState(false);
+  const [addComment, setAddComment] = useState(false);
+  const [comments, setComments] = useState([]);
   const albumImages = useSelector((state) => state.album.images);
   console.log(albumImages);
 
@@ -36,17 +46,6 @@ const AlbumImages = () => {
   const navigate = useNavigate();
 
   console.log(user);
-
-  const [imageFile, setImageFile] = useState("");
-  const [tags, setTags] = useState("");
-  const [isFavorite, setIsFavorite] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [updatedDesc, setUpdatedDesc] = useState("");
-  const [toast, setToast] = useState("");
-  const [sharedUsers, setSharedUsers] = useState("");
-  const [showFavorites, setShowFavorites] = useState(false);
-  const [addComment, setAddComment] = useState(false);
-  const [comments, setComments] = useState([]);
 
   const showToast = (message) => {
     setToast(message);
