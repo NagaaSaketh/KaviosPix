@@ -539,7 +539,7 @@ const AlbumImages = () => {
             <div className="flex flex-col md:flex-row gap-8 items-start">
               <div className="flex-1 flex justify-center items-center min-h-75 md:min-h-125">
                 <img
-                  src={`${BASE_URL}/uploads/${selectedImage.name}`}
+                  src={selectedImage.imageUrl}
                   className="rounded-2xl max-h-[80vh] object-contain shadow-xl"
                 />
               </div>
