@@ -167,8 +167,8 @@ Sample Response :
 ```
 {
 
-message: Album deleted successfully!,
-deletedAlbum: {_id,name,description,albumID,...}
+    message: Album deleted successfully!,
+    deletedAlbum: {_id,name,description,albumID,...}
 
 }
 ```
@@ -182,8 +182,8 @@ Sample Response :
 ```
 {
 
-message: Album shared with read-only access,
-sharedUsers: "sharedUsers details"
+    message: Album shared with read-only access,
+    sharedUsers: "sharedUsers details"
 
 }
 ```
@@ -199,8 +199,8 @@ Sample Response :
 ```
 {
 
-message: Image uploaded successfully,
-image:{_id,albumID,name,tags,isFavorite,...}
+    message: Image uploaded successfully,
+    image:{_id,albumID,name,tags,isFavorite,...}
 
 }
 ```
@@ -214,8 +214,8 @@ Sample Response :
 ```
 {
 
-message: Image uploaded successfully,
-image:{_id,albumID,name,tags,isFavorite,...}
+    message: Image uploaded successfully,
+    image:{_id,albumID,name,tags,isFavorite,...}
 
 }
 ```
@@ -239,11 +239,10 @@ Sample Response:
 ```
 {
 
-message: Marked as favorite/unfavorite
-image:{_id,albumID,name,tags,isFavorite,...}
+    message: Marked as favorite/unfavorite
+    image:{_id,albumID,name,tags,isFavorite,...}
 
 }
-
 ```
 
 ### **POST /api/albums/:albumID/images/:imageID/comments**
@@ -255,8 +254,8 @@ Sample Response:
 ```
 {
 
-message: Comment added successfully,
-comments: "...."
+    message: Comment added successfully,
+    comments: "...."
 
 }
 
