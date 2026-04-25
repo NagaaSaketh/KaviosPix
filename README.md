@@ -38,6 +38,10 @@ npm run dev
 
 ## Technologies
 
+## Frontend
+- React JS
+- React Router
+
 ### Backend
 
 - Node.js
