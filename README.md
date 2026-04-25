@@ -70,26 +70,26 @@ npm run dev
 
 ## Features
 
-### Album Management
+**Album Management**
 
 - Create, update, and delete albums
 - Share albums with other users (read-only access)
 - Fetch personal and shared albums
 
-### Image Management
+**Image Management**
 
 - Upload images (Cloudinary integration)
 - Use tags for easy searching
 - Mark images as favorites
 - Delete images
 
-### Collaboration
+**Collaboration**
 
 - Comment on images
 - View comments with user details
 - Shared users can also comment on images.
 
-### Filtering & Search
+**Filtering & Search**
 
 - Filter images by tags
 - Fetch favorite images separately
