@@ -17,7 +17,6 @@ git clone https://github.com/NagaaSaketh/KaviosPix.git
 cd KaviosPix
 npm install
 npm run dev
-
 ```
 
 ---
